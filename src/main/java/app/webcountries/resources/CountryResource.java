@@ -226,7 +226,7 @@ public class CountryResource
         return filtered;
     }
 
-    public Country min()
+    public Country minPopulation()
     {
         Country min = null;
 
@@ -240,13 +240,41 @@ public class CountryResource
         return min;
     }
 
-    public Country max()
+    public Country maxPopulation()
     {
         Country max = null;
 
         for(Country c: countryList)
         {
             if (max == null || c.getPopulation() > max.getPopulation())
+            {
+                max = c;
+            }
+        }
+        return max;
+    }
+
+    public Country minAge()
+    {
+        Country min = null;
+
+        for(Country c: countryList)
+        {
+            if (min == null || c.getMedianAge() < min.getMedianAge())
+            {
+                min = c;
+            }
+        }
+        return min;
+    }
+
+    public Country maxAge()
+    {
+        Country max = null;
+
+        for(Country c: countryList)
+        {
+            if (max == null || c.getMedianAge() > max.getMedianAge())
             {
                 max = c;
             }
