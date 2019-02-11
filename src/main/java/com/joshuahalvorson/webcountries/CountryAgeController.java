@@ -12,14 +12,19 @@ public class CountryAgeController {
 
     // /age/age?age=
     @RequestMapping("/age")
-    public ArrayList<Country> getCountriesWithMedianAgeEqualOrGreaterThanGiven(@RequestParam(value = "age") int age){
+    public ArrayList<Country> getCountriesWithMedianAgeEqualOrGreaterThanGiven(@RequestParam(value = "age") String age){
         ArrayList<Country> countries = new ArrayList<>();
 
-        WebcountriesApplication.countriesList.countryList.forEach(country -> {
-            if(country.getMedianAge() >= age){
-                countries.add(country);
-            }
-        });
+        try {
+            WebcountriesApplication.countriesList.countryList.forEach(country -> {
+                if((country.getMedianAge() >= Integer.parseInt(age))){
+                    countries.add(country);
+                }
+            });
+        }catch (NumberFormatException e){
+            e.getMessage();
+        }
+
 
         return countries;
     }

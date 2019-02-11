@@ -12,13 +12,18 @@ public class CountryPopulationController {
 
     // /population/size?people=
     @RequestMapping("/size")
-    public ArrayList<Country> getCountriesByPopulationGiven(@RequestParam(value = "people") int population){
+    public ArrayList<Country> getCountriesByPopulationGiven(@RequestParam(value = "people") String population){
         ArrayList<Country> countries = new ArrayList<>();
+        try{
+            WebcountriesApplication.countriesList.countryList.forEach(country -> {
+                if(country.getPopulation() >= Integer.parseInt(population))
+                    countries.add(country);
+            });
 
-        WebcountriesApplication.countriesList.countryList.forEach(country -> {
-            if(country.getPopulation() >= population)
-                countries.add(country);
-        });
+        }catch (NumberFormatException e){
+            e.getMessage();
+        }
+
 
         return countries;
     }

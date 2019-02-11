@@ -28,7 +28,7 @@ public class CountryNamesController {
     @RequestMapping("/begin")
     public ArrayList<Country> getCountriesThatBeginWithLetter(@RequestParam(value = "letter") String letter){
         ArrayList<Country> countries = new ArrayList<>();
-
+        
         WebcountriesApplication.countriesList.countryList.forEach(country -> {
             if(country.getName().startsWith(letter.toUpperCase()))
                 countries.add(country);
@@ -42,16 +42,21 @@ public class CountryNamesController {
 
     // /names/size?letters=
     @RequestMapping("/size")
-    public ArrayList<Country> getCountriesWithNameEqualToOrLonger(@RequestParam(value = "letters") int length){
+    public ArrayList<Country> getCountriesWithNameEqualToOrLonger(@RequestParam(value = "letters") String length){
         ArrayList<Country> countries = new ArrayList<>();
+        try{
+            WebcountriesApplication.countriesList.countryList.forEach(country -> {
+                if(country.getName().length() >= Integer.parseInt(length))
+                    countries.add(country);
+            });
 
-        WebcountriesApplication.countriesList.countryList.forEach(country -> {
-            if(country.getName().length() >= length)
-                countries.add(country);
-        });
+            countries.sort((c1, c2) ->
+                    c1.getName().compareToIgnoreCase(c2.getName()));
+            return countries;
 
-        countries.sort((c1, c2) ->
-                c1.getName().compareToIgnoreCase(c2.getName()));
+        }catch (NumberFormatException e){
+            e.getMessage();
+        }
 
         return countries;
     }
