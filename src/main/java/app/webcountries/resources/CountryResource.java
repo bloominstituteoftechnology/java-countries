@@ -226,5 +226,33 @@ public class CountryResource
         return filtered;
     }
 
+    public Country min()
+    {
+        Country min = null;
+
+        for(Country c: countryList)
+        {
+            if (min == null || c.getPopulation() < min.getPopulation())
+            {
+                min = c;
+            }
+        }
+        return min;
+    }
+
+    public Country max()
+    {
+        Country max = null;
+
+        for(Country c: countryList)
+        {
+            if (max == null || c.getPopulation() > max.getPopulation())
+            {
+                max = c;
+            }
+        }
+        return max;
+    }
+
 
 }
