@@ -22,4 +22,21 @@ public class CountryAgeController {
 
         return countries;
     }
+
+    // /population/min
+    @RequestMapping("/min")
+    public Country getSmallestCountryByPopulation(){
+        int lastPop = 0;
+        Country lastCountry = null;
+
+        for(Country c : WebcountriesApplication.countriesList.countryList){
+            if(c.getPopulation() > lastPop){
+                lastPop = c.getPopulation();
+            }else{
+                lastCountry = c;
+            }
+        }
+        
+        return lastCountry;
+    }
 }
