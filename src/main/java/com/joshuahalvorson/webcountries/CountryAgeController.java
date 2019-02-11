@@ -41,4 +41,19 @@ public class CountryAgeController {
         return lastCountry;
     }
 
+    // /age/max
+    @RequestMapping("/max")
+    public Country getCountryWithHighestMedianAge(){
+        int lastAge = 0;
+        Country lastCountry = null;
+
+        for(Country c : WebcountriesApplication.countriesList.countryList){
+            if(c.getMedianAge() > lastAge){
+                lastCountry = c;
+                lastAge = c.getMedianAge();
+            }
+        }
+
+        return lastCountry;
+    }
 }
