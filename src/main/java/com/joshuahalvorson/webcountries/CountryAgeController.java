@@ -24,4 +24,21 @@ public class CountryAgeController {
         return countries;
     }
 
+    // /age/min
+    @RequestMapping("/min")
+    public Country getCountryWithLowestMedianAge(){
+        int lastAge = 0;
+        Country lastCountry = null;
+
+        for(Country c : WebcountriesApplication.countriesList.countryList){
+            if(c.getMedianAge() > lastAge){
+                lastAge = c.getMedianAge();
+            }else{
+                lastCountry = c;
+            }
+        }
+
+        return lastCountry;
+    }
+
 }
