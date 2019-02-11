@@ -36,7 +36,23 @@ public class CountryAgeController {
                 lastCountry = c;
             }
         }
-        
+
+        return lastCountry;
+    }
+
+    // /population/max
+    @RequestMapping("/max")
+    public Country getLargestCountryByPopulation(){
+        int lastPop = 0;
+        Country lastCountry = null;
+
+        for(Country c : WebcountriesApplication.countriesList.countryList){
+            if(c.getPopulation() > lastPop){
+                lastCountry = c;
+                lastPop = c.getPopulation();
+            }
+        }
+
         return lastCountry;
     }
 }
