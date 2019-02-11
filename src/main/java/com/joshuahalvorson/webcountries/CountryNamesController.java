@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @RequestMapping("/names")
 public class CountryNamesController {
 
-    ///names/all
+    // /names/all
     @RequestMapping("/all")
     public ArrayList<String> getAllCountries(){
         ArrayList<String> names = new ArrayList<>();
@@ -24,21 +24,35 @@ public class CountryNamesController {
         return names;
     }
 
-    ///names/begin?letter=
+    //  /names/begin?letter=
     @RequestMapping("/begin")
     public ArrayList<Country> getCountriesThatBeginWithLetter(@RequestParam(value = "letter") String letter){
-        ArrayList<Country> countriesResult = new ArrayList<>();
+        ArrayList<Country> countries = new ArrayList<>();
 
         WebcountriesApplication.countriesList.countryList.forEach(country -> {
-            if(country.getName().startsWith(letter.toUpperCase())){
-                countriesResult.add(country);
-            }
+            if(country.getName().startsWith(letter.toUpperCase()))
+                countries.add(country);
         });
 
-
-        countriesResult.sort((c1, c2) ->
+        countries.sort((c1, c2) ->
                 c1.getName().compareToIgnoreCase(c2.getName()));
 
-        return countriesResult;
+        return countries;
+    }
+
+    // /names/size?letters=
+    @RequestMapping("/size")
+    public ArrayList<Country> getCountriesWithNameEqualToOrLonger(@RequestParam(value = "letters") int length){
+        ArrayList<Country> countries = new ArrayList<>();
+
+        WebcountriesApplication.countriesList.countryList.forEach(country -> {
+            if(country.getName().length() >= length)
+                countries.add(country);
+        });
+
+        countries.sort((c1, c2) ->
+                c1.getName().compareToIgnoreCase(c2.getName()));
+
+        return countries;
     }
 }
