@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/population")
-public class CountryAgeController {
+public class CountryPopulationController {
 
     // /population/size?people=
     @RequestMapping("/size")
