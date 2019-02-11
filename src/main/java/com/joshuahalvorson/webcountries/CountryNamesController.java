@@ -23,4 +23,22 @@ public class CountryNamesController {
 
         return names;
     }
+
+    ///names/begin?letter=
+    @RequestMapping("/begin")
+    public ArrayList<Country> getCountriesThatBeginWithLetter(@RequestParam(value = "letter") String letter){
+        ArrayList<Country> countriesResult = new ArrayList<>();
+
+        WebcountriesApplication.countriesList.countryList.forEach(country -> {
+            if(country.getName().startsWith(letter.toUpperCase())){
+                countriesResult.add(country);
+            }
+        });
+
+
+        countriesResult.sort((c1, c2) ->
+                c1.getName().compareToIgnoreCase(c2.getName()));
+
+        return countriesResult;
+    }
 }
