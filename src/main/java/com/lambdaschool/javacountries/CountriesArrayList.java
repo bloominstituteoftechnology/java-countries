@@ -7,7 +7,7 @@ public class CountriesArrayList {
     public ArrayList<Country> countryList;
 
     public CountriesArrayList() {
-        this.countryList = new ArrayList<>();
+        countryList = new ArrayList<>();
         countryList.add(new Country("China",1420062022,9388211,39));
         countryList.add(new Country("India",1368737513,2973190,28));
         countryList.add(new Country("U.S.",329093110,9147420,38));
@@ -209,6 +209,5 @@ public class CountriesArrayList {
         countryList.add(new Country("U.S. Virgin Islands",104909,350,42));
         countryList.add(new Country("Antigua and Barbuda",104084,440,32));
         countryList.add(new Country("Seychelles",95702,460,36));
-
     }
 }
