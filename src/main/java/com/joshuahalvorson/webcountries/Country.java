@@ -2,13 +2,23 @@ package com.joshuahalvorson.webcountries;
 
 public class Country {
     private String name;
+    private int population;
     private long landMass;
     private int medianAge;
 
-    public Country(String name, long landMass, int medianAge) {
+    public Country(String name, int population, long landMass, int medianAge) {
         this.name = name;
+        this.population = population;
         this.landMass = landMass;
         this.medianAge = medianAge;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
     }
 
     public String getName() {
