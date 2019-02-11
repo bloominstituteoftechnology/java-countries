@@ -39,7 +39,7 @@ public class Country
     }
 
     // sets name
-    public String setName()
+    public void setName(String name)
     {
         this.name = name;
     }
