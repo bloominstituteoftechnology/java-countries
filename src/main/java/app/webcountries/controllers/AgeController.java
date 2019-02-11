@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class AgeController
 {
     @RequestMapping("age")
-    public ArrayList<Country> age(@RequestParam(value = "people") String n)
+    public ArrayList<Country> age(@RequestParam(value = "age") String n)
     {
         return WebCountriesApplication.countryResource.filter((e) -> e.getMedianAge() >= Integer.parseInt(n));
     }
