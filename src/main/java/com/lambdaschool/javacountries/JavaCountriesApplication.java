@@ -4,9 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaCountriesApplication {
+public class JavaCountriesApplication
+{
 
-    public static CountriesArrayList listcountry;
+    static CountriesArrayList listcountry;
     public static void main(String[] args)
     {
 

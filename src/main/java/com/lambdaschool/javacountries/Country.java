@@ -1,6 +1,10 @@
 package com.lambdaschool.javacountries;
 
-public class Country {
+import org.springframework.web.servlet.mvc.method.annotation.UriComponentsBuilderMethodArgumentResolver;
+
+import java.util.Comparator;
+
+public class Country{
     private String name;
     private int population, landMass, medianAge;
 
@@ -44,4 +48,23 @@ public class Country {
     public void setMedianAge(int medianAge) {
         this.medianAge = medianAge;
     }
+
+//    public static Comparator<Country> CountryNameComparator = new Comparator<Country>() {
+//        @Override
+//        public int compare(Country o1, Country o2) {
+//            String countryName1 = o1.getName().toLowerCase();
+//            String countryName2 = o2.getName().toLowerCase();
+//
+//            return countryName1.compareTo(countryName2);
+//        }
+//    };
+//
+//    public static Comparator<Country> CountryAgeComparator = new Comparator<Country>() {
+//        @Override
+//        public int compare(Country o1, Country o2) {
+//            return 0;
+//        }
+//    };
+
+
 }

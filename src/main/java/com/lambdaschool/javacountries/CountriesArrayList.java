@@ -1,10 +1,11 @@
 package com.lambdaschool.javacountries;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CountriesArrayList {
 
-    public ArrayList<Country> countryList;
+    public List<Country> countryList;
 
     public CountriesArrayList() {
         countryList = new ArrayList<>();
