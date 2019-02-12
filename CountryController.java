@@ -73,7 +73,7 @@ public class CountryController
     }
 
 //  return the country with the largest population
-    @RequestMapping("/population/min")
+    @RequestMapping("/population/max")
     public Country getMaxPopulation()
     {
         int max = 0;
