@@ -16,6 +16,7 @@ public class CountryAgeController {
     @RequestMapping("/age")
     public List<Country> age(@RequestParam(value = "age") String n)
     {
+       
         JavaCountriesApplication.listcountry.countryList.sort(Comparator.comparingInt(Country::getMedianAge));
         return JavaCountriesApplication.listcountry.countryList
                 .stream()
