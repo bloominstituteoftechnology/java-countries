@@ -16,6 +16,8 @@ public class CountryPopulationController {
     @RequestMapping("/size")
     public List<Country> getCountrieswithMedianPopGreaterThanEqualTo(@RequestParam(value = "people") String population)
     {
+        JavaCountriesApplication.listcountry.countryList.sort(Comparator.comparingInt(Country::getPopulation));
+
         return JavaCountriesApplication.listcountry.countryList
                 .stream()
                 .filter((c) -> c.getPopulation() >= Integer.parseInt(population))
