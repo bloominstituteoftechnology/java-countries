@@ -31,7 +31,8 @@ public class CountryNamesController {
     @RequestMapping("/begin")
     public List<Country> getCountriesBeginningWithLetter(@RequestParam(value = "letter") String letter){
         return JavaCountriesApplication.listcountry.countryList.stream()
-                .filter((c) -> c.getName().toLowerCase().startsWith(letter.toLowerCase())).collect(Collectors.toList());
+                .filter((c) -> c.getName().toLowerCase().startsWith(letter.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @RequestMapping("/size")

@@ -10,36 +10,34 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/age")
-public class CountryAgeController {
+@RequestMapping("/population")
+public class CountryPopulationController {
 
-    @RequestMapping("/age")
-    public List<Country> age(@RequestParam(value = "age") String n)
+    @RequestMapping("/size")
+    public List<Country> getCountrieswithMedianPopGreaterThanEqualTo(@RequestParam(value = "people") String population)
     {
         return JavaCountriesApplication.listcountry.countryList
                 .stream()
-                .filter((c) -> c.getMedianAge() >= Integer.parseInt(n))
+                .filter((c) -> c.getPopulation() >= Integer.parseInt(population))
                 .collect(Collectors.toList());
     }
 
     @RequestMapping("/min")
-    public Country getCountrywithLowestMinAge()
+    public Country getCountrywithLowestPopulation()
     {
 
         return JavaCountriesApplication.listcountry.countryList
                 .stream()
-                .min(Comparator.comparing(Country::getMedianAge))
+                .min(Comparator.comparing(Country::getPopulation))
                 .orElseThrow(NoSuchElementException::new);
     }
 
     @RequestMapping("/max")
-    public Country getCountryWithGreatestMinAge()
+    public Country getCountryWithGreatestPopulation()
     {
         return JavaCountriesApplication.listcountry.countryList
                 .stream()
-                .max(Comparator.comparing(Country::getMedianAge))
+                .max(Comparator.comparing(Country::getPopulation))
                 .orElseThrow(NoSuchElementException::new);
     }
-
-
 }
