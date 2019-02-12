@@ -21,10 +21,18 @@ public class CountryPopulationController
         return filtered;
     }
 
-    @RequestMapping("/size")
+    @RequestMapping("/min")
     public Country smallestCountry()
     {
         Country smallest = CountriesApplication.countryList.countryList.stream().min(Comparator.comparing(c -> c.getPopulation())).get();
         return smallest;
     }
+
+    @RequestMapping("/max")
+    public Country biggestCountry()
+    {
+        Country biggest = CountriesApplication.countryList.countryList.stream().max(Comparator.comparing(c -> c.getPopulation())).get();
+        return biggest;
+    }
+
 }
