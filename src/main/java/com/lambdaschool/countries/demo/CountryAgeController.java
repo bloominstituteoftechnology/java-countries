@@ -25,4 +25,11 @@ public class CountryAgeController
         Country smallest = CountriesApplication.countryList.countryList.stream().min(Comparator.comparing(c -> c.getMedianAge())).get();
         return smallest;
     }
+
+    @RequestMapping("/max")
+    public Country biggestMedianAge()
+    {
+        Country biggest = CountriesApplication.countryList.countryList.stream().max(Comparator.comparing(c -> c.getMedianAge())).get();
+        return biggest;
+    }
 }
