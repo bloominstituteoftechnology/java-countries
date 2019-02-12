@@ -1,5 +1,6 @@
 package com.lambdaschool.countries.demo;
 
+import com.sun.source.tree.CompilationUnitTree;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,5 +19,12 @@ public class CountryPopulationController
         ArrayList<Country> filtered = new ArrayList<>(CountriesApplication.countryList.countryList);
         filtered.removeIf(c -> c.getPopulation() < people );
         return filtered;
+    }
+
+    @RequestMapping("/size")
+    public Country smallestCountry()
+    {
+        Country smallest = CountriesApplication.countryList.countryList.stream().min(Comparator.comparing(c -> c.getPopulation())).get();
+        return smallest;
     }
 }
