@@ -3,7 +3,8 @@ package com.lambdaschool.countries.demo;
 import java.util.ArrayList;
 
 public class CountryList {
-    public ArrayList<CountryList> countryList = new ArrayList<CountryList>();
+    public ArrayList<Country> countryList = new ArrayList<Country>();
+
 
     public CountryList() {
         countryList.add(new Country("China",1420062022,9388211,39));

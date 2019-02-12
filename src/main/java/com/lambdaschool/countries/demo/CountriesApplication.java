@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CountriesApplication {
     static CountryList countryList;
     public static void main(String[] args) {
-        countryList = new CountryList;
+        countryList = new CountryList();
         SpringApplication.run(CountriesApplication.class, args);
     }
 }
