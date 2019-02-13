@@ -1,7 +1,7 @@
 # Project Country Search
 
 A student that completes this project shows that they can:
-* use Maven including reading and modifying the pom.xls
+* use Maven including reading and modifying the pom.xml
 * use Tomcat to implement web services including reviewing Tomcat logs
 * use of Spring 
 
