@@ -21,19 +21,19 @@ The countries of the world have many different defining attributes including lan
 * The following URLs should return the requested data given the parameters
     * /names/all
       * return the names of all the countries alphabetically
-    * /names/begin?letter=
+    * /names/start/{letter}
       * return the countries alphabetically that begin with the given letter
-    * /names/size?letters=
+    * /names/size/{number}
       * return the countries alphabetically that have a name equal to or longer than the given length
 
-    * /population/size?people=
+    * /population/size/{people}
       * return the countries that have a population equal to or greater than the given population
     * /population/min
       * return the country with the smallest population
     * /population/max
       * return the country with the largest population
 
-    * /age/age?age=
+    * /age/age/{age}
       * return the countries that have a median age equal to or greater than the given age
     * /age/min
       * return the country with the smallest median age
