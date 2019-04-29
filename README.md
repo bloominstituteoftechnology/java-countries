@@ -38,6 +38,7 @@ The countries of the world have many different defining attributes including lan
     * /population/max
       * return the country with the largest population
     * Stretch Goal
+      * /population/median
       * return the country with the median population
 
     * /age/age/{age}
