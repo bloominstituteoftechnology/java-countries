@@ -17,6 +17,10 @@ The countries of the world have many different defining attributes including lan
       * should contain the standard getter and setters
        
       Note: the country in suggested layout is found at the end of this document
+      
+      Note: the sort method must work with `int` - so not `long`. the solution - type casting! See the code snippet below:  
+      `.sort((c1, c2) -> (int)(c1.getPopulation() - c2.getPopulation()))`
+      
        
 * The following URLs should return the requested data given the parameters
     * /names/all
@@ -32,6 +36,8 @@ The countries of the world have many different defining attributes including lan
       * return the country with the smallest population
     * /population/max
       * return the country with the largest population
+    * Stretch Goal
+      * return the country with the median population
 
     * /age/age/{age}
       * return the countries that have a median age equal to or greater than the given age
@@ -39,6 +45,9 @@ The countries of the world have many different defining attributes including lan
       * return the country with the smallest median age
     * /age/max
       * return the country the the greatest median age  
+    * Stretch Goal
+      * /age/median
+      * return the country the median median age
 
 // Name, Population, Land Mass in Km2, Median Age
 
