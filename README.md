@@ -21,6 +21,7 @@ The countries of the world have many different defining attributes including lan
       Note: the sort method must work with `int` - so not `long`. the solution - type casting! See the code snippet below:  
       `.sort((c1, c2) -> (int)(c1.getPopulation() - c2.getPopulation()))`
       
+      Note: to calculate median for stretch goals - if the list contains an odd number of items, pick the the middle one. If the list contains an even number of items, pick either of the two items that lie in the middle.
        
 * The following URLs should return the requested data given the parameters
     * /names/all
