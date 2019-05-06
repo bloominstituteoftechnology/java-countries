@@ -1,9 +1,9 @@
 # Project Country Search
 
 A student that completes this project shows that they can:
-* use Maven including reading and modifying the pom.xml
-* use Tomcat to implement web services including reviewing Tomcat logs
-* use of Spring 
+* use Maven including reading and modifying the pom.xml.
+* use Spring and Spring Boot to build a REST API service.
+* use Tomcat.
 
 # Introduction
 
@@ -49,7 +49,7 @@ The countries of the world have many different defining attributes including lan
       * return the country the the greatest median age  
     * Stretch Goal
       * /age/median
-      * return the country the median median age
+      * return the country with the median median age
 
 // Name, Population, Land Mass in Km2, Median Age
 
