@@ -1,5 +1,6 @@
 package com.jakeesveld.java_countries
 
+import org.apache.coyote.Response
 import org.springframework.http.HttpStatus
 import org.springframework.http.RequestEntity
 import org.springframework.http.ResponseEntity
@@ -41,8 +42,29 @@ class CountryController{
         }, HttpStatus.OK)
     }
 
+    @RequestMapping(value = ["/population/min"])
+    fun getCountryWithSmallestPopulation(): ResponseEntity<Any>{
+        return ResponseEntity(countryList.countryList.minBy { country -> country.population }, HttpStatus.OK)
+    }
 
-    /*/population/size/{people}
+    @RequestMapping(value = ["/population/max"])
+    fun getCountryWithLargestPopulation(): ResponseEntity<Any>{
+        return ResponseEntity(countryList.countryList.maxBy { country -> country.population }, HttpStatus.OK)
+    }
 
-return the countries that have a population equal to or greater than the given population*/
+    @RequestMapping(value = ["/age/age/{age}"])
+    fun getCountryByAge(@PathVariable age: Long): ResponseEntity<Any>{
+        return ResponseEntity(countryList.countryList.filter { country -> country.medianAge >= age }, HttpStatus.OK)
+    }
+
+    @RequestMapping(value = ["/age/min"])
+    fun getCountryWithSmallestAge(): ResponseEntity<Any>{
+        return ResponseEntity(countryList.countryList.minBy { country -> country.medianAge }, HttpStatus.OK)
+    }
+
+    @RequestMapping(value = ["/age/max"])
+    fun getCountryWithLargestAge(): ResponseEntity<Any>{
+        return ResponseEntity(countryList.countryList.maxBy { country -> country.medianAge }, HttpStatus.OK)
+    }
+
 }
