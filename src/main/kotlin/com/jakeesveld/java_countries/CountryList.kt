@@ -1,7 +1,7 @@
 package com.jakeesveld.java_countries
 
 class CountryList(){
-    val countryList: ArrayList<Country> = ArrayList()
+    val countryList= mutableListOf<Country>()
 
     init {
         countryList.add(Country("China", 1420062022, 9388211, 39))
