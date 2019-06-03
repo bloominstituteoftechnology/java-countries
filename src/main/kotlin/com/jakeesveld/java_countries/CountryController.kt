@@ -1,8 +1,6 @@
 package com.jakeesveld.java_countries
 
-import org.apache.coyote.Response
 import org.springframework.http.HttpStatus
-import org.springframework.http.RequestEntity
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -65,6 +63,18 @@ class CountryController{
     @RequestMapping(value = ["/age/max"])
     fun getCountryWithLargestAge(): ResponseEntity<Any>{
         return ResponseEntity(countryList.countryList.maxBy { country -> country.medianAge }, HttpStatus.OK)
+    }
+
+    @RequestMapping(value = ["/age/median"])
+    fun getCountryWithMedianAge(): ResponseEntity<Any>{
+        val listCopy: List<Country> = countryList.countryList.sortedBy { country -> country.medianAge }
+        return ResponseEntity(listCopy[listCopy.size / 2], HttpStatus.OK)
+    }
+
+    @RequestMapping(value = ["/population/median"])
+    fun getCountryWithMedianPopulation(): ResponseEntity<Any>{
+        val listCopy: List<Country> = countryList.countryList.sortedBy { country -> country.population }
+        return ResponseEntity(listCopy[listCopy.size / 2], HttpStatus.OK)
     }
 
 }
