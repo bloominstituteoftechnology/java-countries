@@ -2,9 +2,10 @@ package com.lambdaschool.countries;
 
 public class Country {
     private String name;
-    private int population,size,median_age;
+    private int size,median_age;
+    private long population;
 
-    public Country(String name, int population, int size, int median_age) {
+    public Country(String name, long population, int size, int median_age) {
         this.name = name;
         this.population = population;
         this.size = size;
@@ -19,11 +20,11 @@ public class Country {
         this.name = name;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
