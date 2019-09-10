@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class CountriesL
 {
-    //arrayList
+    //arrayList (also a field)
     public ArrayList<Country> countryList = new ArrayList<Country>();
 
-
+    //adding data to arrayList
     public CountriesL()
     {
         countryList.add(new Country("China",1420062022,9388211,39));
