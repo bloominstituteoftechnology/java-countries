@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/name")
+@RequestMapping("/names")
 public class NameController
 {
-    //  http://localhost:8080/name/all
+    //  http://localhost:8080/names/all
     @GetMapping(value = "/all",
                 produces = {"application/json"})
     //java method that it will run:
@@ -24,5 +24,7 @@ public class NameController
         return new ResponseEntity<>(JavacountriesApplication.theCountriesL.countryList, HttpStatus.OK);
     }
 
+    //2.  http://localhost:8080/names/start/{letter}
 
+    //3.  http://localhost:8080/names/size/{number}
 }
