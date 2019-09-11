@@ -29,7 +29,7 @@ public class CountryController
 
     //return the countries alphabetically that begin with the given letter
     //localhost:5000/names/start/{letter}
-    @GetMapping(value = "start/{letter}",
+    @GetMapping(value = "/start/{letter}",
                 produces = {"application/json"})
     public ResponseEntity<?> getCountriesByFirsLetter(
             @PathVariable
