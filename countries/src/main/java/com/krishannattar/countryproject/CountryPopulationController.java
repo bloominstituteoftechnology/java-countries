@@ -46,4 +46,17 @@ public class CountryPopulationController {
 
         return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/median",
+            produces = "application/json")
+    public ResponseEntity<?> findMedianPopulation()
+    {
+        ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
+
+        returnCountries.sort((c1,c2)->(int)(c1.getPopulation() - c2.getPopulation()));
+
+        int medianCountry = (returnCountries.size()/2);
+
+        return new ResponseEntity<>(returnCountries.get(medianCountry), HttpStatus.OK);
+    }
 }
