@@ -2,7 +2,7 @@ package com.krishannattar.countryproject;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Country {
+public class Country{
 
     private static final AtomicLong country = new AtomicLong();
     private long id;
