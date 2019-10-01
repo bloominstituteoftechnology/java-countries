@@ -57,6 +57,6 @@ public class CountryPopulationController {
 
         int medianCountry = (returnCountries.size()/2);
 
-        return new ResponseEntity<>(returnCountries.get(medianCountry), HttpStatus.OK);
+        return new ResponseEntity<>(returnCountries, HttpStatus.OK);
     }
 }
