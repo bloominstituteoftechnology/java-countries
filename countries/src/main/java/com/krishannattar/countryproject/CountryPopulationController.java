@@ -26,27 +26,24 @@ public class CountryPopulationController {
     }
 
     @GetMapping(value = "/min",
-    produces = "application/json")
+            produces = "application/json")
     public ResponseEntity<?> findLowestPopulation()
     {
         ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
 
         returnCountries.sort((c1,c2)->(int)(c1.getPopulation() - c2.getPopulation()));
 
+        return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
+    }
 
-//        ArrayList<Country> cloneReturnCountries = new ArrayList<>();
-//
-//        Iterator<Country> interator = returnCountries.iterator();
-//        while(interator.hasNext()){
-//            cloneReturnCountries.add((Country) interator.next().clone());
-//        }
+    @GetMapping(value = "/max",
+            produces = "application/json")
+    public ResponseEntity<?> findLargestPopulation()
+    {
+        ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
 
-//        for (Country c: returnCountries)
-//        {
-//            cloneReturnCountries.add(c);
-//        }
+        returnCountries.sort((c1,c2)->(int)(c2.getPopulation() - c1.getPopulation()));
 
-//        returnCountries.add(new Country("Jeep", 23,255,23));
         return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
     }
 }
