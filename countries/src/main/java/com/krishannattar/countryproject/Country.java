@@ -7,11 +7,11 @@ public class Country {
     private static final AtomicLong country = new AtomicLong();
     private long id;
     private String name;
-    private int population;
+    private long population;
     private int landMassSize;
     private int medianAge;
 
-    public Country(String name, int population, int landMassSize, int medianAge)
+    public Country(String name, long population, int landMassSize, int medianAge)
     {
         this.id = country.incrementAndGet();
         this.name = name;
@@ -32,11 +32,11 @@ public class Country {
         this.name = name;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
