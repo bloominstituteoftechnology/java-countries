@@ -28,4 +28,13 @@ public class CountryNameController {
         returnCountries.sort((c1,c2)-> c1.getName().compareToIgnoreCase(c2.getName()));
         return new ResponseEntity<>(returnCountries,HttpStatus.OK);
     }
+
+    @GetMapping(value = "/size/{number}",
+    produces = "application/json")
+    public ResponseEntity<?> getCountriesByNameLength(@PathVariable int number)
+    {
+        ArrayList<Country> returnCountries = CountryprojectApplication.ourCountryList.findCountries(c->c.getName().length() >= number);
+        returnCountries.sort((c1,c2)->c1.getName().compareToIgnoreCase(c2.getName()));
+        return new ResponseEntity<>(returnCountries,HttpStatus.OK);
+    }
 }
