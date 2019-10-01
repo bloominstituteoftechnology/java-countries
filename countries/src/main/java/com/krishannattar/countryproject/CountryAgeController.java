@@ -23,4 +23,24 @@ public class CountryAgeController {
         returnCountries.sort((c1,c2)->c2.getMedianAge()-c1.getMedianAge());
         return new ResponseEntity<>(returnCountries, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/min",
+    produces = "application/json")
+    public ResponseEntity<?> getLowestMedianAge()
+    {
+        ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
+        returnCountries.sort((c1,c2)->c1.getMedianAge()-c2.getMedianAge());
+        return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "/max",
+            produces = "application/json")
+    public ResponseEntity<?> getLargestMedianAge()
+    {
+        ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
+        returnCountries.sort((c1,c2)->c2.getMedianAge()-c1.getMedianAge());
+        return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
+
+    }
 }
