@@ -43,4 +43,15 @@ public class CountryAgeController {
         return new ResponseEntity<>(returnCountries.get(0), HttpStatus.OK);
 
     }
+
+    @GetMapping(value = "/median",
+            produces = "application/json")
+    public ResponseEntity<?> getMedianMedianAge()
+    {
+        ArrayList<Country> returnCountries = (ArrayList) CountryprojectApplication.ourCountryList.countryList;
+        returnCountries.sort((c1,c2)->c2.getMedianAge()-c1.getMedianAge());
+        int medianCountry = returnCountries.size() /2;
+        return new ResponseEntity<>(returnCountries.get(medianCountry), HttpStatus.OK);
+
+    }
 }
