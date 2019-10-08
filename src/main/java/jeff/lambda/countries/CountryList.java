@@ -209,21 +209,26 @@ public class CountryList
         countryList.add(new Country("U.S. Virgin Islands", 104909, 350, 42));
         countryList.add(new Country("Antigua and Barbuda", 104084, 440, 32));
         countryList.add(new Country("Seychelles", 95702, 460, 36));
-        }
+    }
 
         // filter methods
-        public ArrayList<Country> findCountries(CheckCountry tester)
+    /**
+     * Returns an array of countries matching the filter expression.
+     * @param tester This is the filter function.
+     * @return Returns an array of countries.
+     */
+    public ArrayList<Country> findCountries(CheckCountry tester)
+    {
+        ArrayList<Country> tempCountryList = new ArrayList<>();
+
+        for (Country c : countryList)
         {
-            ArrayList<Country> tempCountryList = new ArrayList<>();
-
-            for (Country c : countryList)
+            if (tester.test(c))
             {
-                if (tester.test(c))
-                {
-                    tempCountryList.add(c);
-                }
+                tempCountryList.add(c);
             }
-
-            return tempCountryList;
         }
+
+        return tempCountryList;
+    }
 }
