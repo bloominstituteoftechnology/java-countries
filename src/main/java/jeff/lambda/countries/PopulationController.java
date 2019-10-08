@@ -22,14 +22,21 @@ public class PopulationController
     }
 
     // /population/min
-    @GetMapping(value - "/population/min", produces = {"application/json"})
+    @GetMapping(value = "/min", produces = {"application/json"})
     public ResponseEntity<?> getCountryByLowestPopulation()
     {
-
+        ArrayList<Country> rtnCountries = CountriesApplication.ourCountryList.countryList;
+        rtnCountries.sort((c1, c2) -> (c1.getPopulation() - c2.getPopulation()));
+        return new ResponseEntity<>(rtnCountries.get(0), HttpStatus.OK);
     }
 
-
     // /population/max
-
+    @GetMapping(value = "/max", produces = {"application/json"})
+    public ResponseEntity<?> getCountryByHighestPopulation()
+    {
+        ArrayList<Country> rtnCountries = CountriesApplication.ourCountryList.countryList;
+        rtnCountries.sort((c1, c2) -> (c1.getPopulation() - c2.getPopulation()));
+        return new ResponseEntity<>(rtnCountries.get(rtnCountries.size() - 1), HttpStatus.OK);
+    }
 
 }
