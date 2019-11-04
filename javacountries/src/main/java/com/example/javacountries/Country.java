@@ -62,4 +62,13 @@ land mass size, and median age*/
     public void setMedian_age(int median_age) {
         this.median_age = median_age;
     }
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + country_name + '\'' +
+                ", population=" + population +
+                ", landMassSize=" + landmass_size +
+                ", medianAge=" + median_age +
+                '}';
+    }
 }

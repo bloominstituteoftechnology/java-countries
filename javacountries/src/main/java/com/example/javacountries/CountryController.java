@@ -37,4 +37,14 @@ public class CountryController {
                 .compareToIgnoreCase(e2.getCountry_name()));
         return new ResponseEntity<>(alphabeticalCountry, HttpStatus.OK);
     }
+
+    //  /names/size/{number}
+    // localhost: 2019/names/size/{number}
+    @GetMapping(value = "/size/{number}")
+    public ResponseEntity<?> getCountriesNameSize(@PathVariable int number) {
+        ArrayList<Country> rtnNames = JavacountriesApplication.myCountryList.findCountry(c -> c.getCountry_name().length() >= number);
+        rtnNames.sort((c1, c2) -> c1.getCountry_name().compareToIgnoreCase(c2.getCountry_name()));
+        return new ResponseEntity<>(rtnNames, HttpStatus.OK);
+    }
+
 }
