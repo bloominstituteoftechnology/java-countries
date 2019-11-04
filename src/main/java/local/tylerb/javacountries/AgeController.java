@@ -7,33 +7,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.transform.OutputKeys;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/population")
-public class PopulationController {
+@RequestMapping("/age")
+public class AgeController {
 
-    @GetMapping("/size/{people}")
-    public ResponseEntity<?> getCountryByPopulationSize(@PathVariable long people) {
-        ArrayList<Country> popList = JavaCountriesApplication.list.findCountries(c -> c.getPopulation() >= people);
-        return new ResponseEntity<>(popList, HttpStatus.OK);
+    @GetMapping(value = "/age/{age}")
+    public ResponseEntity<?> getCountriesByAge(@PathVariable long age) {
+        ArrayList<Country> rtnAgeList = JavaCountriesApplication.list.findCountries(c -> c.getAge() >= age);
+        return new ResponseEntity<>(rtnAgeList, HttpStatus.OK);
     }
 
     @GetMapping("/min")
     public ResponseEntity<?> getSmallPop() {
-        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c1.getPopulation() - c2.getPopulation()));
+        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c1.getAge() - c2.getAge()));
         return new ResponseEntity<>(JavaCountriesApplication.list.countryList.get(0), HttpStatus.OK);
     }
 
     @GetMapping("/max")
     public ResponseEntity<?> getLargePop() {
-        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c2.getPopulation() - c1.getPopulation()));
+        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c2.getAge() - c1.getAge()));
         return new ResponseEntity<>(JavaCountriesApplication.list.countryList.get(0), HttpStatus.OK);
     }
 
     @GetMapping("/median")
-    public ResponseEntity<?> getMiddlePop() {
+    public ResponseEntity<?> getMiddleAge() {
         int middle;
         int listSize = JavaCountriesApplication.list.countryList.size() - 1;
         if (listSize % 2 == 0) {
@@ -41,9 +40,10 @@ public class PopulationController {
         } else {
             middle = ((listSize + 1) / 2);
         }
-        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c1.getPopulation() - c2.getPopulation()));
+        JavaCountriesApplication.list.countryList.sort((c1, c2) -> (int)(c1.getAge() - c2.getAge()));
         return new ResponseEntity<>(JavaCountriesApplication.list.countryList.get(middle), HttpStatus.OK);
     }
+
 
 
 }
