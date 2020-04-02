@@ -2,9 +2,11 @@
 
 A student that completes this project shows that they can:
 
-* use Maven including reading and modifying the pom.xml.
-* use Spring and Spring Boot to build a REST API service.
-* use Tomcat.
+* Use IntelliJ in the following areas: application creation, code entry, and code execution
+* Explain the uses of and differences between Maven, Spring, and Tomcat
+* Build a REST service using Spring Boot
+* Use and implement inversion of control and dependency injection with Spring
+* Implement Beans throughout the Beans’ lifecycle controlling the Beans using annotations
 
 ## Introduction
 
