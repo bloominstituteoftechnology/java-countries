@@ -12,7 +12,7 @@ A student that completes this project shows that they can:
 
 The countries of the world have many different defining attributes including land size, population, and median age. Below is a list of countries to include in your data. As most people do their research using websites, we are going to create web services to help search this data. We will be returning JSON objects. Nothing fancy for now!
 
-We will be creating an array list for country objects. The country object contain the following fields
+We will be creating an array list for country objects. The country object contains the following fields
 
 * Name
 * Population
@@ -23,10 +23,10 @@ The object should also include the standard getters and setters. You can see the
 
 Some Important Notes That Might help:
 
-* The country in suggested layout is found at the end of this document
+* The country's suggested layout is found at the end of this document
 * The sort method must work with `int` - so not `long`. the solution - type casting! See the code snippet below:  
       `.sort((c1, c2) -> (int)(c1.getPopulation() - c2.getPopulation()))`
-* To calculate median for stretch goals - if the list contains an odd number of items, pick the the middle one. If the list contains an even number of items, pick either of the two items that lie in the middle.
+* To calculate median for stretch goals - if the list contains an odd number of items, pick the middle one. If the list contains an even number of items, pick either of the two items that lie in the middle.
 
 Using the data at the end of this document, the endpoints will produce the following outputs. Expand to see the suggested outputs!
 
@@ -2658,7 +2658,7 @@ The following URLs should return the requested data given the parameters
 
 ## The Data
 
-I know this is much data, but it is real data and feel free to copy and paste the data into your code at the appropriate spot! 
+I know this is much data, but it is real data and feel free to copy and paste the data into your code at the appropriate spot!
 
 The parameters are listed in this order Name, Population, Land Mass in Km2, Median Age
 
