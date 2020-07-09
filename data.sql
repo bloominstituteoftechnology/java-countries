@@ -1,3 +1,6 @@
+DELETE
+FROM countries;
+
 INSERT INTO countries (countryid, name, population, landmasskm2, medianage)
                VALUES (1, 'China',1420062022,9388211,39),
                       (2, 'India',1368737513,2973190,28),
@@ -61,7 +64,7 @@ INSERT INTO countries (countryid, name, population, landmasskm2, medianage)
                       (60, 'Malawi',19718743,94280,18),
                       (61, 'Mali',19689140,1220190,16),
                       (62, 'Romania',19483360,230170,43),
-                      (66, 'Kazakhstan',18592970,2699700,31),
+                      (63, 'Kazakhstan',18592970,2699700,31),
                       (64, 'Syria',18499181,183630,22),
                       (65, 'Chile',18336653,743532,35),
                       (66, 'Zambia',18137369,743390,18),
@@ -199,4 +202,6 @@ INSERT INTO countries (countryid, name, population, landmasskm2, medianage)
                       (198, 'Aruba',106053,180,41),
                       (199, 'U.S. Virgin Islands',104909,350,42),
                       (200, 'Antigua and Barbuda',104084,440,32),
-                      (201, 'Seychelles',95702,460,36)
+                      (201, 'Seychelles',95702,460,36);
+
+alter sequence hibernate_sequence restart with 250;
