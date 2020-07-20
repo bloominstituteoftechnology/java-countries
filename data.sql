@@ -204,4 +204,10 @@ INSERT INTO countries (countryid, name, population, landmasskm2, medianage)
                       (200, 'Antigua and Barbuda',104084,440,32),
                       (201, 'Seychelles',95702,460,36);
 
+/*
+We must tell hibernate the ids that have already been used.
+The number must be larger than the last used id.
+250 > 201 so we are good!
+ */
+
 alter sequence hibernate_sequence restart with 250;
