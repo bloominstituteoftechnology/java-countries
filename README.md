@@ -1449,7 +1449,7 @@ Using the data.sql at the end, the endpoints will produce the following outputs.
 </details>
 
 <details>
-<summary>http://localhost:2019/names/start/u</summary>
+<summary>http://localhost:2019/names/start/{lette}</summary>
 
 ```JSON
 [
