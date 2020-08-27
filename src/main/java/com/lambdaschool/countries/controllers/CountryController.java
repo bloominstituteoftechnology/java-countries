@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -63,6 +65,24 @@ public class CountryController {
         total.put("population_total", totalPopulation);
 
         return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+    //http://localhost:2019/population/min
+    @GetMapping(value = "population/min", produces = {"application/json"})
+    public ResponseEntity<?> MinPopulation(){
+        List<Country> countryList = new ArrayList<>();
+        countryRepository.findAll().iterator().forEachRemaining(countryList::add);
+        countryList.sort(Comparator.comparing(Country::getPopulation));
+
+        return new ResponseEntity<>(countryList.get(0), HttpStatus.OK);
+    }
+    //http://localhost:2019/population/max
+    @GetMapping(value = "population/max", produces = {"application/json"})
+    public ResponseEntity<?> MaxPopulation(){
+        List<Country> countryList = new ArrayList<>();
+        countryRepository.findAll().iterator().forEachRemaining(countryList::add);
+        countryList.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+        return new ResponseEntity<>(countryList.get(0), HttpStatus.OK);
     }
 
 
