@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class CountryConroller
+public class CountryController
 {
     // create an object of the repository when we first run the class
     @Autowired
