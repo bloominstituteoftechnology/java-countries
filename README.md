@@ -38,7 +38,7 @@ To set up this project you will need to
 * [ ] Using the cloned repository as your working directory, create an initial application using the IntelliJ GUI interface remembering to implement the project on your newly created <firstName-lastName> branch, committing changes regularly
 * [ ] Push commits: git push origin <firstName-lastName>
 
-![Video on how to set up your project](https://youtu.be/4Yrm93HxeT8)
+- [Video on how to set up your project](https://youtu.be/4Yrm93HxeT8)
 
 * [ ] When completed, submit on Canvas the link to YOUR GitHub Repository
 
