@@ -29,6 +29,20 @@ Some Important Notes That Might help:
 
 Using the data.sql at the end, the endpoints will produce the following outputs. Expand to see the suggested outputs! Note that id numbers may vary.
 
+To set up this project you will need to
+
+* [ ] Create a forked copy of this project
+* [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
+* [ ] Create a new branch: git checkout -b <firstName-lastName>.
+* [ ] Using the cloned repository as your working directory, create a initial application using the IntelliJ GUI interface
+* [ ] Push commits: git push origin <firstName-lastName>
+* [ ] Implement the project on your newly created <firstName-lastName> branch, committing changes regularly
+* [ ] Push commits: git push origin <firstName-lastName>
+
+![Video on how to set up your project]()
+
+* [ ] When completed, submit on Canvas the link to YOUR GitHub Repository
+
 ### MVP
 
 <details>
