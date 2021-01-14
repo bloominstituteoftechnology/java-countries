@@ -34,9 +34,8 @@ To set up this project you will need to
 * [ ] Create a forked copy of this project
 * [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
 * [ ] Create a new branch: git checkout -b <firstName-lastName>.
-* [ ] Using the cloned repository as your working directory, create a initial application using the IntelliJ GUI interface
 * [ ] Push commits: git push origin <firstName-lastName>
-* [ ] Implement the project on your newly created <firstName-lastName> branch, committing changes regularly
+* [ ] Using the cloned repository as your working directory, create a initial application using the IntelliJ GUI interface remembering to implement the project on your newly created <firstName-lastName> branch, committing changes regularly
 * [ ] Push commits: git push origin <firstName-lastName>
 
 ![Video on how to set up your project]()
