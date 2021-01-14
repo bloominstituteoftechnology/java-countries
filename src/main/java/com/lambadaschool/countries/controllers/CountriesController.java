@@ -23,6 +23,8 @@ public class CountriesController {
 
         countriesRepository.findAll().iterator().forEachRemaining(myList::add);
 
+        myList.sort((firstItem, secondItem) -> (firstItem.getName().charAt(0) > secondItem.getName().charAt(0)) ? 1 : -1);
+
         return new ResponseEntity<>(myList, HttpStatus.OK);
     }
 }
