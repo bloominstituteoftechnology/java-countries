@@ -30,6 +30,7 @@ public class CountriesController {
         return new ResponseEntity<>(myList, HttpStatus.OK);
     }
 
+    // http://localhost:2019/names/start/{letter}
     @GetMapping(value = "/names/start/{letter}", produces = "application/json")
     public ResponseEntity<?> findByName(@PathVariable char letter) {
         List<Country> myList = new ArrayList<>();
@@ -42,6 +43,23 @@ public class CountriesController {
 
         return new ResponseEntity<>(filteredList, HttpStatus.OK);
 
+    }
+
+    // http://localhost:2019/population/total
+    @GetMapping(value = "/population/total", produces = "application/json")
+    public  ResponseEntity<?> findTotalPopulation() {
+        List<Country> myList = new ArrayList<>();
+
+        countriesRepository.findAll().iterator().forEachRemaining(myList::add);
+
+        long totalPopulation = 0;
+        for (Country c : myList) {
+            totalPopulation += c.getPopulation();
+        }
+
+        System.out.println("The Total Population is " + totalPopulation);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private List<Country> filterCountries(List<Country> countriesList, CheckCountry tester) {
