@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class CountriesController {
@@ -61,6 +63,23 @@ public class CountriesController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    //http://localhost:2019/population/min
+    @GetMapping(value = "/population/min", produces = "application/json")
+    public ResponseEntity<?> findByName() {
+        List<Country> myList = new ArrayList<>();
+
+
+        countriesRepository.findAll().iterator().forEachRemaining(myList::add);
+
+        Country minByPopulation = myList.stream().min(Comparator.comparing(Country::getPopulation)).orElseThrow(NoSuchElementException::new);
+
+        return new ResponseEntity<>(minByPopulation, HttpStatus.OK);
+
+    }
+
+    //http://localhost:2019/population/max
+  
 
     private List<Country> filterCountries(List<Country> countriesList, CheckCountry tester) {
         List<Country> rtnList = new ArrayList<>();
