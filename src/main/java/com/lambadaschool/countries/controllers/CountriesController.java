@@ -66,7 +66,7 @@ public class CountriesController {
 
     //http://localhost:2019/population/min
     @GetMapping(value = "/population/min", produces = "application/json")
-    public ResponseEntity<?> findByName() {
+    public ResponseEntity<?> findByMinPopulation() {
         List<Country> myList = new ArrayList<>();
 
 
@@ -79,7 +79,18 @@ public class CountriesController {
     }
 
     //http://localhost:2019/population/max
-  
+    @GetMapping(value = "/population/max", produces = "application/json")
+    public ResponseEntity<?> findByMaxPopulation() {
+        List<Country> myList = new ArrayList<>();
+
+
+        countriesRepository.findAll().iterator().forEachRemaining(myList::add);
+
+        Country minByPopulation = myList.stream().max(Comparator.comparing(Country::getPopulation)).orElseThrow(NoSuchElementException::new);
+
+        return new ResponseEntity<>(minByPopulation, HttpStatus.OK);
+
+    }
 
     private List<Country> filterCountries(List<Country> countriesList, CheckCountry tester) {
         List<Country> rtnList = new ArrayList<>();
