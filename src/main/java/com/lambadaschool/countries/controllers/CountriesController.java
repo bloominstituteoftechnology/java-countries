@@ -83,12 +83,29 @@ public class CountriesController {
     public ResponseEntity<?> findByMaxPopulation() {
         List<Country> myList = new ArrayList<>();
 
-
         countriesRepository.findAll().iterator().forEachRemaining(myList::add);
 
         Country minByPopulation = myList.stream().max(Comparator.comparing(Country::getPopulation)).orElseThrow(NoSuchElementException::new);
 
         return new ResponseEntity<>(minByPopulation, HttpStatus.OK);
+
+    }
+
+    //http://localhost:2019/population/median
+    @GetMapping(value = "/population/median", produces = "application/json")
+    public ResponseEntity<?> findByMedianPopulation() {
+        List<Country> myList = new ArrayList<>();
+
+
+        countriesRepository.findAll().iterator().forEachRemaining(myList::add);
+
+        myList.sort((firstItem, secondItem) -> ((int)firstItem.getPopulation() > (int)secondItem.getPopulation()) ? -1 : 1);
+
+        int size = myList.size();
+
+        Country median = myList.get((int)(-1 + size/2));
+
+        return new ResponseEntity<>(median, HttpStatus.OK);
 
     }
 
