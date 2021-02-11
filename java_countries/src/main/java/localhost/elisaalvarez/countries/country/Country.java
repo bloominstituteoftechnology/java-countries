@@ -1,0 +1,80 @@
+package localhost.elisaalvarez.countries.country;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
+@Table(name="countries")
+
+
+public class Country {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private  long countryid;
+    private String name;
+    private long population;
+    private long landmasskm2;
+    private int medianage;
+
+    public Country(String name, int population, int landmasskm2, int medianage) {
+        this.name = name;
+        this.population = population;
+        this.landmasskm2 = landmasskm2;
+        this.medianage = medianage;
+    }
+
+    public Country() {
+    }
+
+    public long getCountryid() {
+        return countryid;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(long population) {
+        this.population = population;
+    }
+
+    public long getLandmasskm2() {
+        return landmasskm2;
+    }
+
+    public void setLandmasskm2(long landmasskm2) {
+        this.landmasskm2 = landmasskm2;
+    }
+
+    public int getMedianage() {
+        return medianage;
+    }
+
+    public void setMedianage(int medianage) {
+        this.medianage = medianage;
+    }
+
+    @Override
+    public String toString() {
+        return "countries{" +
+                "countryid=" + countryid +
+                ", name='" + name + '\'' +
+                ", population=" + population +
+                ", landmasskm2=" + landmasskm2 +
+                ", medianage=" + medianage +
+                '}';
+    }
+}
