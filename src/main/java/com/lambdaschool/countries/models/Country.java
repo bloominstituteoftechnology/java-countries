@@ -30,8 +30,8 @@ public class Country
         return countryid;
     }
 
-    public void setCountryId(long countryId) {
-        this.countryid = countryId;
+    public void setCountryId(long countryid) {
+        this.countryid = countryid;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public class Country
     @Override
     public String toString() {
         return "Country{" +
-                "countryId=" + countryid +
+                "countryid=" + countryid +
                 ", name='" + name + '\'' +
                 ", population=" + population +
                 ", landmasskm2=" + landmasskm2 +
