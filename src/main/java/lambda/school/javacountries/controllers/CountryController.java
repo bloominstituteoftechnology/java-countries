@@ -103,6 +103,27 @@ public class CountryController {
     return new ResponseEntity<>(filteredList, HttpStatus.OK);
   }
   
+  // http://localhost:2019/population/median
+  @GetMapping(value = "/population/median", produces = "application/json")
+  public ResponseEntity<?> getMax() {
+    List<Country> countryMax = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryMax.add(e));
+    
+    int size = countryMax.size();
+    long max = countryMax.get(0).getPopulation();
+    
+    for (int i = 1; i < size; i++) {
+      if (max < countryMax.get(i).getPopulation()) {
+        max = countryMax.get(i).getPopulation();
+      }
+    }
+    long finalMax = max;
+    List<Country> filteredList = filterCountries(countryMax,
+                                                 (e) ->e.getPopulation() == finalMax);
+    
+    System.out.println("The max is: " + max);
+    return new ResponseEntity<>(filteredList, HttpStatus.OK);
+  }
   private List<Country> filterCountries(List<Country> countryList, QueryCountries tester) {
     List<Country> newFilteredList = new ArrayList<>();
   
