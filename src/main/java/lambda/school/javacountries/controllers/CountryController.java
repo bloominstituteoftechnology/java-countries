@@ -44,6 +44,65 @@ public class CountryController {
     return new ResponseEntity<>(filteredList, HttpStatus.OK);
   }
   
+  // http://localhost:2019/population/total
+  @GetMapping(value = "/population/total", produces = "application/json")
+  public ResponseEntity<?> getTotal() {
+    List<Country> countryList = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryList.add(e));
+    
+    long total = 0;
+    
+    for (Country e : countryList) {
+      total += e.getPopulation();
+    }
+    System.out.println("The total is: " + total);
+    return new ResponseEntity<>(total, HttpStatus.OK);
+  }
+  
+  // http://localhost:2019/population/min
+  @GetMapping(value = "/population/min", produces = "application/json")
+  public ResponseEntity<?> getMin() {
+    List<Country> countryList = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryList.add(e));
+    
+    int size = countryList.size();
+    long min = countryList.get(0).getPopulation();
+    
+    for (int i = 1; i < size; i++) {
+      if (min > countryList.get(i).getPopulation()) {
+        min = countryList.get(i).getPopulation();
+      }
+    }
+    long finalMin = min;
+    List<Country> filteredList = filterCountries(countryList,
+                                                 (e) ->e.getPopulation() == finalMin);
+    
+    System.out.println("The min is: " + min);
+    return new ResponseEntity<>(filteredList, HttpStatus.OK);
+  }
+  
+  // http://localhost:2019/population/max
+  @GetMapping(value = "/population/max", produces = "application/json")
+  public ResponseEntity<?> getMax() {
+    List<Country> countryMax = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryMax.add(e));
+    
+    int size = countryMax.size();
+    long max = countryMax.get(0).getPopulation();
+    
+    for (int i = 1; i < size; i++) {
+      if (max < countryMax.get(i).getPopulation()) {
+        max = countryMax.get(i).getPopulation();
+      }
+    }
+    long finalMax = max;
+    List<Country> filteredList = filterCountries(countryMax,
+                                                 (e) ->e.getPopulation() == finalMax);
+    
+    System.out.println("The max is: " + max);
+    return new ResponseEntity<>(filteredList, HttpStatus.OK);
+  }
+  
   private List<Country> filterCountries(List<Country> countryList, QueryCountries tester) {
     List<Country> newFilteredList = new ArrayList<>();
   
