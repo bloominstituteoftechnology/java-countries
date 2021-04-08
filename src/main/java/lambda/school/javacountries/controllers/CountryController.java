@@ -42,7 +42,7 @@ public class CountryController {
     private List<Countries> filterCountries(List<Countries> countriesList, CountryCheck tester) {
         List<Countries> rtnList = new ArrayList<>();
 
-        for(Countries c : countriesList) {
+        for (Countries c : countriesList) {
             if (tester.test(c)) {
                 rtnList.add(c);
             }
@@ -70,7 +70,24 @@ public class CountryController {
         List<Countries> countriesList = new ArrayList<>();
         countriesRepository.findAll().iterator().forEachRemaining(countriesList::add);
 
+        countriesList.sort((c1, c2) -> (int) (c2.getPopulation() - c1.getPopulation()));
 
+        Countries smallCountry = countriesList.get(countriesList.size() -1);
+
+        return new ResponseEntity<>(smallCountry, HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "/population/max", produces = "application/json")
+    public ResponseEntity<?> getMax() {
+        List<Countries> countriesList = new ArrayList<>();
+        countriesRepository.findAll().iterator().forEachRemaining(countriesList::add);
+
+        countriesList.sort((c1, c2) -> (int) (c1.getPopulation() - c2.getPopulation()));
+
+        Countries biggestCountry = countriesList.get(countriesList.size() -1);
+
+        return new ResponseEntity<>(biggestCountry, HttpStatus.OK);
 
     }
 }
