@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -62,19 +64,19 @@ public class CountryController {
   // http://localhost:2019/population/min
   @GetMapping(value = "/population/min", produces = "application/json")
   public ResponseEntity<?> getMin() {
-    List<Country> countryList = new ArrayList<>();
-    countryRepository.findAll().iterator().forEachRemaining(e -> countryList.add(e));
+    List<Country> countryMin = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryMin.add(e));
     
-    int size = countryList.size();
-    long min = countryList.get(0).getPopulation();
+    int size = countryMin.size();
+    long min = countryMin.get(0).getPopulation();
     
     for (int i = 1; i < size; i++) {
-      if (min > countryList.get(i).getPopulation()) {
-        min = countryList.get(i).getPopulation();
+      if (min > countryMin.get(i).getPopulation()) {
+        min = countryMin.get(i).getPopulation();
       }
     }
     long finalMin = min;
-    List<Country> filteredList = filterCountries(countryList,
+    List<Country> filteredList = filterCountries(countryMin,
                                                  (e) ->e.getPopulation() == finalMin);
     
     System.out.println("The min is: " + min);
@@ -103,25 +105,39 @@ public class CountryController {
     return new ResponseEntity<>(filteredList, HttpStatus.OK);
   }
   
+  //STRETCH
   // http://localhost:2019/population/median
   @GetMapping(value = "/population/median", produces = "application/json")
-  public ResponseEntity<?> getMax() {
-    List<Country> countryMax = new ArrayList<>();
-    countryRepository.findAll().iterator().forEachRemaining(e -> countryMax.add(e));
+  public ResponseEntity<?> getMedian() {
+    List<Country> countryList = new ArrayList<>();
+    countryRepository.findAll().iterator().forEachRemaining(e -> countryList.add(e));
     
-    int size = countryMax.size();
-    long max = countryMax.get(0).getPopulation();
+    int size = countryList.size();
+    long num = 0;
     
-    for (int i = 1; i < size; i++) {
-      if (max < countryMax.get(i).getPopulation()) {
-        max = countryMax.get(i).getPopulation();
-      }
+    
+    Comparator<Country> sortedList = Comparator.comparingLong(Country::getPopulation);
+    Collections.sort(countryList, sortedList);
+//    Check if list is sorted
+    for (Country obj : countryList) {
+      System.out.println(obj.getPopulation());
     }
-    long finalMax = max;
-    List<Country> filteredList = filterCountries(countryMax,
-                                                 (e) ->e.getPopulation() == finalMax);
     
-    System.out.println("The max is: " + max);
+    //Confirm mid population size
+    long middle = countryList.get(size / 2).getPopulation();
+    System.out.println("Middle population is :" + middle);
+    
+    if (size % 2 == 1) {
+      num = (countryList.get((size / 2) + 1).getPopulation());
+    }
+    else {
+      num = countryList.get(size / 2).getPopulation();
+    }
+    long finalMedian = num;
+    List<Country> filteredList = filterCountries(countryList,
+                                                 (e) ->e.getPopulation() == finalMedian);
+    
+    System.out.println("The median is: " + num);
     return new ResponseEntity<>(filteredList, HttpStatus.OK);
   }
   private List<Country> filterCountries(List<Country> countryList, QueryCountries tester) {
