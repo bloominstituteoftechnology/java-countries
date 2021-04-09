@@ -98,4 +98,17 @@ public class CountryController
         Country rtnCountry = countryList.get(0);
         return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
     }
+
+//    http://localhost:2019/population/median
+    @GetMapping(value = "/population/median", produces = "application/json")
+    public ResponseEntity<?> getMedian()
+    {
+        List<Country> countryList = new ArrayList<>();
+        countryRepository.findAll().iterator().forEachRemaining(countryList::add);
+        countryList.sort((c1, c2) -> (int)(c2.getPopulation() - c1.getPopulation()));
+
+        Country rtnCountry = countryList.get((countryList.size() / 2) + 1);
+
+        return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
+    }
 }
