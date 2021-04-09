@@ -11,7 +11,7 @@ public class Country
     private long countryid;
     private String name;
     private long population;
-    private long landmasskn2;
+    private long landmasskm2;
     private int medianage;
 
     public Country()
@@ -21,12 +21,12 @@ public class Country
     public Country(
         String name,
         long population,
-        long landmasskn2,
+        long landmasskm2,
         int medianage)
     {
         this.name = name;
         this.population = population;
-        this.landmasskn2 = landmasskn2;
+        this.landmasskm2 = landmasskm2;
         this.medianage = medianage;
     }
 
@@ -60,14 +60,14 @@ public class Country
         this.population = population;
     }
 
-    public long getLandmasskn2()
+    public long getLandmasskm2()
     {
-        return landmasskn2;
+        return landmasskm2;
     }
 
-    public void setLandmasskn2(long landmasskn2)
+    public void setLandmasskm2(long landmasskm2)
     {
-        this.landmasskn2 = landmasskn2;
+        this.landmasskm2 = landmasskm2;
     }
 
     public int getMedianage()
