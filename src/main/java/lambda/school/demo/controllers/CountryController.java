@@ -20,13 +20,15 @@ public class CountryController
 //    http://localhost:2019/names/all
 
     @GetMapping(value = "/names/all", produces = "application/json")
-    public ResponseEntity<?> findAllEmps()
+    public ResponseEntity<?> getAllCountries()
     {
-        List<Country> countries = new ArrayList<>();
+        List<Country> countriesList = new ArrayList<>();
 
-        countryRepository.findAll().iterator().forEachRemaining(countries::add);
+        countryRepository.findAll().iterator().forEachRemaining(countriesList::add);
 
-        return  new ResponseEntity<>(countries, HttpStatus.OK);
+        countriesList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+
+        return  new ResponseEntity<>(countriesList, HttpStatus.OK);
     }
 
 //    http://localhost:2019/names/start/u
